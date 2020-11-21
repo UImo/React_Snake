@@ -1,13 +1,86 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html,
+body{
+    font: 14px "Century Gothic", Futura, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+button{
+    background: none;
+    border: none;
+    height: 50px;
+    width: 50px;
+}
+
+button:focus {
+    outline: none;
+}
+
+.title {
+    margin: 20px;
+    color: green;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    transition: all 0.4s ease-in-out;
+}
+
+.icon:hover {
+    transform: rotate(360deg) scale(1.2);
+}
+
+.snake-container {
+    width: 90vw;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-info{
+    width: 20%;
+}
+
+.restart{
+    margin-top: 40px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.grid {
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.grid-item {
+    outline: 1px solid grey;
+    /*width: 50px;
+    height: 50px;*/
+}
+
+.is-food {
+    background-color: grey;
+    /*margin: 5px;
+    width: 40px;
+    height: 40px;*/
+}
+
+.is-body {
+    background-color: green;
+}
+
+.is-body.is-gameOver {
+    background-color: rgb(180, 0, 0);
+}
+
+.is-head {
+    background-color: darkgreen;
+}
+
+.is-head.is-gameOver  {
+    background-color: darkred;
 }
