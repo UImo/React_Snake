@@ -14,8 +14,8 @@ import './index.css';
 class Board extends React.Component {
     WIDTH = 11;
     HEIGHT = 11;
-    itemWidth = 500/this.WIDTH;
-    itemHeight = 500/this.HEIGHT;
+    itemWidth = 100/this.WIDTH;
+    itemHeight = 100/this.HEIGHT;
     constructor(props){
         super(props);
         this.state = {
@@ -137,7 +137,18 @@ class Board extends React.Component {
     // --- FOOD ---
     foodHandler(){
         // add del food if more than one food
-        const food = this.getRandom();
+        function isIn(body, food){
+            for(let i=0; i<body.length; i++){
+                if(body[i].row === food.row && body[i].col === food.col) return true;
+            }
+            return false;
+        }
+
+        let food = this.getRandom();
+        const {body} = this.state.snake;
+        while(isIn(body,food)) {
+            food = this.getRandom();
+        }
         return food;
     }
 
@@ -326,8 +337,8 @@ class Board extends React.Component {
         return (
         <div className = {className}
             key = { grid.row.toString()+'-'+grid.col.toString() } 
-            style = {{width : this.itemWidth.toString()+'px',
-                    height : this.itemHeight.toString()+'px'}} >
+            style = {{width : this.itemWidth.toString()+'%',
+                    height : this.itemHeight.toString()+'%'}} >
             {}
         </div>);
     }
@@ -345,7 +356,7 @@ class Board extends React.Component {
             <div className= "game-info">
                 <h2 className="score">Score: {this.state.snake.length.toString()}</h2>
                 <h4>Highscore: {this.state.hightScore.toString()}</h4>
-                <div className="pause">{this.state.paused ? "Paused": this.state.gameOver ? "Game Over" : "Space to pause"}</div>
+                <div className="pause">{this.state.paused ? "Paused - Space to play": this.state.gameOver ? "Game Over" : "Space to pause"}</div>
                 <button className="restart" onClick={this.restart}><img className="icon" src="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_update-512.png" alt="re-start"/></button>
                 
             </div>
@@ -365,6 +376,7 @@ class Game extends React.Component {
                 <div className="game-board">
                     <Board />
                 </div>
+                <footer><span className="name">by Mathis Powell</span></footer>
             </div>
         )
     }

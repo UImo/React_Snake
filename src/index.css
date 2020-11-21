@@ -29,6 +29,16 @@ button:focus {
     transform: rotate(360deg) scale(1.2);
 }
 
+.name {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    margin: 10px;
+    color: grey;
+    font-style: italic;
+    font-size: smaller;
+}
+
 .snake-container {
     width: 90vw;
     height: 90vh;
@@ -54,6 +64,7 @@ button:focus {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    outline: 3px solid rgb(116, 116, 116);
 }
 
 .grid-item {
